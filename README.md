@@ -11,6 +11,11 @@
 - `cp .env.example .env` и вставьте свой токен.
 - `python -m app.main`
 
+## Запуск в Docker
+- Собрать образ: `docker build -t tg-ny-bot .`
+- Запустить: `docker run --rm -e BOT_TOKEN=ВАШ_ТОКЕН tg-ny-bot`
+- Можно использовать файл `.env`: `docker run --rm --env-file .env tg-ny-bot`
+
 ## Важно
 - Никогда не коммитьте реальные токены и содержимое `.env`.
 
