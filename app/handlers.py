@@ -1,7 +1,7 @@
 import logging
 
 from aiogram import Router
-from aiogram.filters import CommandStart
+from aiogram.filters import Command, CommandStart
 from aiogram.types import CallbackQuery, Message
 
 from .keyboards import get_start_kb
@@ -30,5 +30,20 @@ async def handle_greeting(callback: CallbackQuery) -> None:
     if callback.message:
         await callback.message.answer(greeting)
     await callback.answer()
+
+
+@router.message(Command("info"))
+async def handle_info(message: Message) -> None:
+    logger.info("Sending info to user_id=%s", message.from_user.id)
+    await message.answer(
+        "Это бот, который создан для поднятия новогоднего настроения."
+    )
+
+
+@router.message(Command("greet"))
+async def handle_greet(message: Message) -> None:
+    greeting = get_random_greeting()
+    logger.info("Sending random greeting to user_id=%s", message.from_user.id)
+    await message.answer(greeting)
 
 
