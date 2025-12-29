@@ -19,4 +19,7 @@ venv/
 Thumbs.db
 .DS_Store
 
+# Data
+data/*.db
+
 
